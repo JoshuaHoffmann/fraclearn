@@ -43,6 +43,14 @@ function getRandomOperation() {
   return operations[getRandomInt(0,3)];
 }
 
+//function for different numbers in numerator and denominator
+function differentRandoms(numerator, denominator, min, max) {
+  while(numerator == denominator) {
+    denominator = getRandomInt(min, max);
+  }
+  return denominator;
+}
+
 //Trying to write a function for creating fractures for different difficulties :D
 function createFrac(level) {
   //The intervals for the different levels are just suggestions, can change if you want
@@ -51,6 +59,8 @@ function createFrac(level) {
     numerator_2 = getRandomInt(1,10);
     denominator_1 = getRandomInt(2,10);
     denominator_2 = getRandomInt(2,10);
+    denominator_1 = differentRandoms(numerator_1, denominator_1, 2, 10);
+    denominator_2 = differentRandoms(numerator_2, denominator_2, 2, 10);
   } else if (level == 2) {
     numerator_1 = getRandomInt(1,20);
     numerator_2 = getRandomInt(1,20);
@@ -78,14 +88,14 @@ function calculateResult() {
 
   switch(operation) {
     case '+':
-      numerator_1 = kgv / numerator_1;
-      numerator_2 = kgv / numerator_2;
+      numerator_1 *= kgv / denominator_1;
+      numerator_2 *= kgv / denominator_2;
       numerator_result = numerator_1 + numerator_2;
       denominator_result = kgv;
       break;
     case '-':
-      numerator_1 = kgv / numerator_1;
-      numerator_2 = kgv / numerator_2;
+      numerator_1 *= kgv / denominator_1;
+      numerator_2 *= kgv / denominator_2;
       numerator_result = numerator_1 - numerator_2;
       denominator_result = kgv;
       break;
@@ -110,7 +120,8 @@ function calculateResult() {
   return result;
 }
 
-//Test 
+//Test
 createFrac(1);
+alert(numerator_1 + "/" + denominator_1 + " " + operation + " " + numerator_2 + "/" + denominator_2 + " = ");
 var r = calculateResult();
-alert(numerator_1 + "/" + denominator_1 + " " + operation + " " + numerator_2 + "/" + denominator_2 + " = " + r[0] + "/" + r[1]);
+alert(r[0] + "/" + r[1])
