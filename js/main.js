@@ -111,6 +111,11 @@ function calculateResult() {
   return result;
 }
 
+// display task
+function displayTask() {
+  let formula = `\(\frac{${numerator_1}}{${denominator_1}}${operation}\frac{${numerator_2}}{${denominator_2}}=\frac{${numerator_result}}{${a}}\)`
+}
+
 //Test 
 createFrac(1);
 var r = calculateResult();
