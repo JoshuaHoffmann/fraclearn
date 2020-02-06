@@ -34,11 +34,12 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-
+// editing paragraphs
 function edit_p(id, str) {
      document.getElementById(id).innerHTML = str;
 }
 
+// choosing a random operation
 function getRandomOperation() {
   return operations[getRandomInt(0,3)];
 }
