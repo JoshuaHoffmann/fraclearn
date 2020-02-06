@@ -1,8 +1,3 @@
-/*Soo, da wir zu zweit arbeiten, dachte ich mir
-  dokumentiere ich den code bissl :D */
-
-/*Hab erstmal ggt und kgv wieder in main gemacht, weil ich keinen Plan hab wie ich die Funktionen
-  benutzen kann wenn die in ner anderen Datei sind, kannst das ja dann verbessern*/
 function ggT(a, b) {
   var r =  a % b;
   while(r > 0) {
@@ -37,6 +32,11 @@ var denominator_result;
 //Getting a random Integer between min and max, both inclusive
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+function edit_p(id, str) {
+     document.getElementById(id).innerHTML = str;
 }
 
 function getRandomOperation() {
