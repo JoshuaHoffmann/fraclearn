@@ -66,11 +66,15 @@ function createFrac(level) {
     numerator_2 = getRandomInt(1,20);
     denominator_1 = getRandomInt(2,20);
     denominator_2 = getRandomInt(2,20);
+    denominator_1 = differentRandoms(numerator_1, denominator_1, 2, 20);
+    denominator_2 = differentRandoms(numerator_2, denominator_2, 2, 20);
   } else if (level == 3) {
     numerator_1 = getRandomInt(1,30);
     numerator_2 = getRandomInt(1,30);
     denominator_1 = getRandomInt(2,30);
     denominator_2 = getRandomInt(2,30);
+    denominator_1 = differentRandoms(numerator_1, denominator_1, 2, 30);
+    denominator_2 = differentRandoms(numerator_2, denominator_2, 2, 30);
   }
 }
 
