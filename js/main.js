@@ -50,5 +50,5 @@ function taskArrtoUI(arr) {
       ltex_task.join(`${element[0]} `)
     }
   }
-  edit_p(id, ltex_task);
+  edit_p("task_p", ltex_task);
 }
