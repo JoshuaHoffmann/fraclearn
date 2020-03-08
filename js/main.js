@@ -26,7 +26,7 @@ function getRandomInt(min, max) {
 }
 
 function edit_p(id, str) {
-     $("#" + id).value.replace(str);
+     $("#" + id).text(str);
 }
 
 function getRandomOperation() {
