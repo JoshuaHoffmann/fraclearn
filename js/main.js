@@ -25,10 +25,6 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function edit_p(id, str) {
-     $("#" + id).text(str);
-}
-
 function getRandomOperation() {
   return operations[getRandomInt(0,3)];
 }
