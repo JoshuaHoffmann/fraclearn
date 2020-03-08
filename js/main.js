@@ -45,7 +45,7 @@ function taskArrtoUI(arr) {
   var ltex_task = "";
   for(element of arr) {
     if(element.length == 2) {
-      ltex_task.concat(`\frac{${element[0]}}{${element[1]}} `)
+      ltex_task.concat(`\\frac{${element[0]}}{${element[1]}} `)
     } else {
       ltex_task.concat(`${element[0]} `)
     }
