@@ -1,5 +1,5 @@
 body {
-    background-color: white;
+    background-color: grey;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -13,7 +13,6 @@ body {
 }
 
 .fraction {
-    display: inline; 
+    display: inline;
     font-size: 48px;
 }
-
