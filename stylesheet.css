@@ -8,6 +8,12 @@ body {
     text-align: right;
 }
 
-#task_p {
+#task {
     font-size: 68px;
 }
+
+.fraction {
+    display: inline; 
+    font-size: 48px;
+}
+
