@@ -41,14 +41,13 @@ function differentRandoms(numerator, denominator, min, max) {
   return denominator;
 }
 
-function taskArrtoUI(arr) {
-  var ltex_task = "";
-  for(element of arr) {
-    if(element.length == 2) {
-      ltex_task += `\\frac{${element[0]}}{${element[1]}} `
+function updateUI(arr) {
+  // arr = [[number1,number2],["operator"],[number3,number4]]
+  for(elem of arr) {
+    if(elem.length == 2) {
+      $("#task").append(`<math><mfrac><mi>${elem[0]}</mi><mi>${elem[1]}</mi></mfrac></math>`)
     } else {
-      ltex_task += `${element[0]} `
+      $("#task").append(`<p class="fraction">${elem[0]}</p>`)
     }
   }
-  edit_p("task_p", ltex_task);
 }
