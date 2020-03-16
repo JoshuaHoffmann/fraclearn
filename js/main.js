@@ -77,4 +77,13 @@ function generateTask(difficulty) {
 	aTask = task
 	updateUI(task)
     return true	
+  
+  // arr = [[number1,number2],["operator"],[number3,number4]]
+  for(elem of arr) {
+    if(elem.length == 2) {
+      $("#task").append(`<math><mfrac><mi>${elem[0]}</mi><mi>${elem[1]}</mi></mfrac></math>`)
+    } else {
+      $("#task").append(`<p class="fraction">${elem[0]}</p>`)
+    }
+  }
 }

@@ -23,10 +23,17 @@ span.frac {
   text-align: center;
   vertical-align: middle;
 }
+
 span.frac > sup, span.frac > sub {
   display: block;
   font: inherit;
   padding: 0 0.3em;
 }
+
 span.frac > sup { border-bottom: 0.08em solid; }
 span.frac > span { display: none; }
+
+.fraction {
+    display: inline;
+    font-size: 48px;
+}
