@@ -1,5 +1,4 @@
 function ggT(a, b) {
-	
   var r =  a % b;
   while(r > 0) {
     a = b;
@@ -10,7 +9,6 @@ function ggT(a, b) {
 }
 
 function kgV(a, b) {
-	
   var v = b;
   while(v % a != 0) {
     v += b;
@@ -18,72 +16,98 @@ function kgV(a, b) {
   return v;
 }
 
-var operations = ['+', '-', '*', '/'];
-var aTask = [];
+var arrTask = [];
+var kgv;
+
 
 //Getting a random Integer between min and max, both inclusive
-function rndInt(min, max) {
-	
+function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function rndOperation() {
-  return operations[rndInt(0,3)];
+//function for different numbers for numerator and denominator
+function getDifferentRandom(n) {
+  var z;
+  do {
+    z = getRandomInt(2, 10);
+  } while(n == z);
+  return z;
 }
 
-//function for different numbers in numerator and denominator
-function differentRandoms(numerator, denominator, min, max) {
-	
-  while(numerator == denominator) {
-    denominator = getRandomInt(min, max);
-  }
-  return denominator;
+function edit_p(id, str) {
+     document.getElementById(id).innerHTML = str;
 }
 
-function updateUI(arr) {
-	
-  // arr = [[number1,number2],["operator"],[number3,number4]]
-  for(elem of arr) {
-    if(elem.length == 2) {
-      $("#task").append(`<span class="frac"><sup>${elem[0]}</sup><span>&frasl;</span><sub>${elem[1]}</sub></span>`)
-    } else {
-      $("#task").append(`<p class="operator">${elem[0]}</p>`)
-    }
+function getRandomOperation() {
+  var operations = ['+', '-', '*', '/'];
+  return operations[getRandomInt(0,3)];
+}
+
+function createFrac(level) {
+  //Für level 1 wird operation nicht benötigt, da man nur ggt oder kgv berechnen muss
+  if(level == 1 || level == 2) {
+    //arrTask 1
+    arrTask.push([getRandomInt(1, 10)]);
+    arrTask[0].push([getDifferentRandom(arrTask[0][0])]);
+    //Operation
+    arrTask.push([getRandomOperation()]);
+    //arrTask 2
+    arrTask.push([getRandomInt(1, 10)]);
+    arrTask[2].push(getDifferentRandom(arrTask[2][0]));
+    //'='
+    arrTask.push(['=']);
+    //calculateResult();
+  } else if (level == 3) {
+
   }
 }
 
-function generateTask(difficulty) {
-	
-	// TODO: Difficulties
-	var task = []
-	const times = 2 // How many fractions
-	
-	// Fill with fractions
-	Array.from({length: times}, () => {
-		
-		rnd1 = rndInt(1,10), rnd2 = rndInt(1,10)
-		while(rnd1/rnd2 == 1)
-		  rnd1 = rndInt(1,10)
-		task.push([rnd1, rnd2])
-	});
-	
-	// Insert Operations
-	task = _.flatMap(task, (value, index, array) =>
-     array.length -1 !== index // check for the last item
-     ? [value, rndOperation()] // insert op
-     : [value] 				   // if last, ignore
-	);
-	
-	aTask = task
-	updateUI(task)
-    return true	
-  
-  // arr = [[number1,number2],["operator"],[number3,number4]]
-  for(elem of arr) {
-    if(elem.length == 2) {
-      $("#task").append(`<math><mfrac><mi>${elem[0]}</mi><mi>${elem[1]}</mi></mfrac></math>`)
-    } else {
-      $("#task").append(`<p class="fraction">${elem[0]}</p>`)
-    }
+createFrac(1);
+alert(arrTask[0][0] +"/" + arrTask[0][1]+ " " + arrTask[1][0] + " " + arrTask[2][0] + "/" + arrTask[2][1] + " " + arrTask[3][0]);
+var frac = calculateResult(arrTask[0][0], arrTask[0][1], arrTask[2][0], arrTask[2][1]);
+alert(frac[0] + "/" + frac[1]);
+
+function calculateResult(nom1, den1, operation, nom2, den2) {
+  //shorten the arrTasks
+  var ggt1 = ggT(nom1, den1);
+  var ggt2 = ggT(nom2, den2);
+  var frac = [];
+
+  kgv = kgV(den1, den2);
+
+
+  switch(operation) {
+    case '+':
+      nom1 *= kgv / den1 ;
+      nom2 *= kgv / den2;
+      frac.push(nom1 + nom2, kgv);
+      break;
+    case '-':
+      nom1 *= kgv / den1 ;
+      nom2 *= kgv / den2;
+      frac.push(nom1 - nom2, kgv);
+      break;
+    case '*':
+      nom1 *= nom2;
+      den1 *= den2;
+      var ggtr = ggT(nom1, den1);
+      frac.push(nom1 / ggtr, den1 / ggtr);
+      break;
+    case '/':
+      nom1 *= den2;
+      den1 *= nom2;
+      var ggtr = ggT(nom1, den1);
+      frac.push(nom1 / ggtr, den1 / ggtr);
+      break;
+    default:
+      alert("Fehler: Ungültige Operation");
   }
+  return frac;
 }
+
+//Test
+/*
+createFrac(1);
+alert(numerator_1 + "/" + denominator_1 + " " + operation + " " + numerator_2 + "/" + denominator_2 + " = ");
+var r = calculateResult();
+alert(r[0] + "/" + r[1])*/
