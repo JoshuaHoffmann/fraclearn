@@ -1,7 +1,8 @@
-# learn fracture arithmetik
-A simple html / javascript programm to learn fracture arithmetik for 5 graders.
+# Fraction-Trainer Website
+A simple html website to teach 5th graders how to calculate with fractions in a little trainer like quiz.
 
-Things to do:
-- Add simple task generator
-- simple representation of fractures
-  
+# TODO:
+- Add taskgeneration
+- Add input
+- Bugfixes
+- Clean code

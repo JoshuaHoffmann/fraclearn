@@ -1,5 +1,5 @@
 body {
-    background-color: white;
+    background-color: lightgrey;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -8,6 +8,25 @@ body {
     text-align: right;
 }
 
-#task_p {
+#task {
     font-size: 68px;
 }
+
+.operator {
+    display: inline;
+    font-size: 56px;
+	vertical-align: middle;
+}
+
+span.frac {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+span.frac > sup, span.frac > sub {
+  display: block;
+  font: inherit;
+  padding: 0 0.3em;
+}
+span.frac > sup { border-bottom: 0.08em solid; }
+span.frac > span { display: none; }
