@@ -77,13 +77,42 @@ function generateTask(difficulty) {
 	aTask = task
 	updateUI(task)
     return true	
-  
-  // arr = [[number1,number2],["operator"],[number3,number4]]
-  for(elem of arr) {
-    if(elem.length == 2) {
-      $("#task").append(`<math><mfrac><mi>${elem[0]}</mi><mi>${elem[1]}</mi></mfrac></math>`)
-    } else {
-      $("#task").append(`<p class="fraction">${elem[0]}</p>`)
-    }
+}
+
+function calculateResult(nom1, den1, operation, nom2, den2) {
+  //shorten the arrTasks
+  var ggt1 = ggT(nom1, den1);
+  var ggt2 = ggT(nom2, den2);
+  var frac = [];
+
+  kgv = kgV(den1, den2);
+
+
+  switch(operation) {
+    case '+':
+      nom1 *= kgv / den1 ;
+      nom2 *= kgv / den2;
+      frac.push(nom1 + nom2, kgv);
+      break;
+    case '-':
+      nom1 *= kgv / den1 ;
+      nom2 *= kgv / den2;
+      frac.push(nom1 - nom2, kgv);
+      break;
+    case '*':
+      nom1 *= nom2;
+      den1 *= den2;
+      var ggtr = ggT(nom1, den1);
+      frac.push(nom1 / ggtr, den1 / ggtr);
+      break;
+    case '/':
+      nom1 *= den2;
+      den1 *= nom2;
+      var ggtr = ggT(nom1, den1);
+      frac.push(nom1 / ggtr, den1 / ggtr);
+      break;
+    default:
+      alert("Fehler: Ungültige Operation");
   }
+  return frac;
 }
