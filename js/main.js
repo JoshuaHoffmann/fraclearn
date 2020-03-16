@@ -86,29 +86,32 @@ function calculateResult(nom1, den1, operation, nom2, den2) {
   var frac = [];
 
   kgv = kgV(den1, den2);
+  var ggtr;
 
 
   switch(operation) {
     case '+':
       nom1 *= kgv / den1 ;
       nom2 *= kgv / den2;
-      frac.push(nom1 + nom2, kgv);
+      ggtr = ggT(nom1, den1);
+      frac.push((nom1 + nom2) /ggtr, kgv / ggtr);
       break;
     case '-':
       nom1 *= kgv / den1 ;
       nom2 *= kgv / den2;
-      frac.push(nom1 - nom2, kgv);
+      ggtr = ggT(nom1, den1);
+      frac.push((nom1 - nom2) / ggtr, kgv / ggtr);
       break;
     case '*':
       nom1 *= nom2;
       den1 *= den2;
-      var ggtr = ggT(nom1, den1);
+      ggtr = ggT(nom1, den1);
       frac.push(nom1 / ggtr, den1 / ggtr);
       break;
     case '/':
       nom1 *= den2;
       den1 *= nom2;
-      var ggtr = ggT(nom1, den1);
+      ggtr = ggT(nom1, den1);
       frac.push(nom1 / ggtr, den1 / ggtr);
       break;
     default:
